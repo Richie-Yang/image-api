@@ -2,14 +2,14 @@ import {inject, lifeCycleObserver, LifeCycleObserver} from '@loopback/core';
 import {juggler} from '@loopback/repository';
 
 const config = {
-  name: process.env.DB_NAME,
+  name: 'db',
   connector: 'mysql',
   url: '',
-  host: process.env.DB_HOST ?? '127.0.0.1',
-  port: process.env.DB_PORT ?? 3306,
-  user: process.env.DB_USER ?? 'root',
-  password: process.env.DB_PASSWORD ?? 'password',
-  database: ''
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_SCHEMA
 };
 
 // Observe application's life cycle to disconnect the datasource when

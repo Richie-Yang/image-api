@@ -9,6 +9,7 @@ import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
+import dotenv from 'dotenv';
 
 export {ApplicationConfig};
 
@@ -20,6 +21,10 @@ export class ImageApiApplication extends BootMixin(
 
     // Set up the custom sequence
     this.sequence(MySequence);
+
+    if (process.env.NODE_ENV !== 'production') {
+      dotenv.config();
+    }
 
     // Set up default home page
     this.static('/', path.join(__dirname, '../public'));
